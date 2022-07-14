@@ -7,6 +7,7 @@ $query = "SELECT * FROM students INNER JOIN student_subjects ON students.id = st
 $result = mysqli_query($conn, $query);
 $student = mysqli_fetch_assoc($result);
 
+// echo 'ID: ' . $student['id'] . '<br>';
 echo 'First Name: ' . $student['name'] . '<br>';
 echo 'Last Name: ' . $student['last_name'] . '<br>';
 echo 'Email: ' . $student['email'] . '<br>';

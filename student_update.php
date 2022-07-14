@@ -67,5 +67,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <option value="art">Art</option>
   </select>
   <br><br>
+  Semester: <select name="semester" id="semester">
+    <option value="1">1</option>
+    <option value="2">2</option>
+  </select>
+  <br><br>
   <input type="submit" name="submit" value="Submit"><br>
 </form>

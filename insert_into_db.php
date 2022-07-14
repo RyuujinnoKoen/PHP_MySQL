@@ -59,8 +59,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   echo 'Problem inserting into the DB.';
   
   $last_id = $conn->insert_id;
-  $query =  "INSERT INTO student_subjects(student_id, subject, semester) VALUES ('$last_id', '$studentSubject', '$studentSemester')";
-  $result = mysqli_query($conn, $query);
+  $query1 =  "INSERT INTO student_subjects(student_id, subject, semester) VALUES ('$last_id', '$studentSubject', '$studentSemester')";
+  $result1 = mysqli_query($conn, $query1);
+
+  if ($result1)
+  echo 'Successfully inserted in the DB!';
+  else
+  echo 'Problem inserting into the DB.';
 }
 
 ?>
