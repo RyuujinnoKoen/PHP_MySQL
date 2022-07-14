@@ -46,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   $studentSubject = $_POST['subjects'];
+  $studentSemester = $_POST['semester'];
 
   $conn = mysqli_connect('localhost', 'root', '', 'school');
   $query = "INSERT INTO students(name, last_name, date_of_birth, email) VALUES('$name', '$lastName', '$dateOfBirth', '$email')";
@@ -58,7 +59,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   echo 'Problem inserting into the DB.';
   
   $last_id = $conn->insert_id;
-  $query =  "INSERT INTO student_subjects(student_id, subject) VALUES ('$last_id', '$studentSubject')";
+  $query =  "INSERT INTO student_subjects(student_id, subject, semester) VALUES ('$last_id', '$studentSubject', '$studentSemester')";
+  $result = mysqli_query($conn, $query);
 }
 
 ?>
@@ -82,6 +84,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <option value="english">English</option>
     <option value="science">Science</option>
     <option value="art">Art</option>
+  </select>
+  <br><br>
+  Semester: <select name="semester" id="semester">
+    <option value="1">1</option>
+    <option value="2">2</option>
   </select>
   <br><br>
   <input type="submit" name="submit" value="Submit"><br>
