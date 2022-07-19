@@ -34,8 +34,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $id = $_GET['id'];
 
+  $studentSubject = $_POST['subjects'];
+  $studentSemester = $_POST['semester'];
+
   $conn = mysqli_connect('localhost', 'root', '', 'school');
-  $query = "SELECT * FROM students WHERE id = '$id'";
+  $query = "UPDATE students SET name = '$name', last_name = '$lastName', date_of_birth = '$dateOfBirth', email = '$email' WHERE students.id = '$id'";
   $result = mysqli_query($conn, $query);
   
   if ($result)
@@ -44,6 +47,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   echo 'Problem inserting into the DB.';
 }
 
+  $last_id = $conn->insert_id;
+  $query1 =  "UPDATE student_subjects SET subject = '$studentSubject', semester = '$studentSemester' WHERE student_subjects.id = '$last_id'";
+  $result1 = mysqli_query($conn, $query1);
+
+  if ($result1)
+  echo 'Successfully inserted in the DB!';
+  else
+  echo 'Problem inserting into the DB.';
 ?>
 
 <h2>Student Update Form</h2>
